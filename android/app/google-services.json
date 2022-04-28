@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "974735186782",
+    "project_id": "authentication-in-flutte-89234",
+    "storage_bucket": "authentication-in-flutte-89234.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974735186782:android:0f2aa5bf9eb3a53a600dcf",
+        "android_client_info": {
+          "package_name": "com.example.authetication_with_google"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974735186782-heslfscrpf9gbhuvtgs1h4irjrv5vko3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.authetication_with_google",
+            "certificate_hash": "7329089257971462ae05074f4a8b60fea3a6da91"
+          }
+        },
+        {
+          "client_id": "974735186782-sfoj8g1843r5prjl19hcg35r4p8soda6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.authetication_with_google",
+            "certificate_hash": "b1cc3e1b21aa80c0bb01cbb93dac0ff8a96f5110"
+          }
+        },
+        {
+          "client_id": "974735186782-n2tsp7sgldj0lof8qo1cebi3su1luq09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVjLfTDri4MnVRPWaAqvQrtSp_kJsVsT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974735186782-n2tsp7sgldj0lof8qo1cebi3su1luq09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
