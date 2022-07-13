@@ -4,6 +4,7 @@ import 'package:authetication_with_google/repository/authentication/authenticati
 import 'package:authetication_with_google/repository/authentication/google_sig_in_provider.dart';
 import 'package:authetication_with_google/repository/authentication/repository.dart';
 import 'package:authetication_with_google/view/home_view.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -14,6 +15,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FirebaseAppCheck.instance.activate();
+  await FirebaseAppCheck.instance.setTokenAutoRefreshEnabled(true);
+  FirebaseAppCheck.instance.onTokenChange.listen((token) {
+    print(token);
+  });
+
   runApp(MyApp());
 }
 
@@ -40,13 +47,15 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ImagesPickerBloc>(
           create: (context) => ImagesPickerBloc(
-            AuthenticationRepository(authenticationFirebaseProvider:  AuthenticationFirebaseProvider(
+            AuthenticationRepository(
+              authenticationFirebaseProvider: AuthenticationFirebaseProvider(
                 firebaseAuth: FirebaseAuth.instance,
-              ),googleSignInProvider: GoogleSignInProvider(
+              ),
+              googleSignInProvider: GoogleSignInProvider(
                 googleSignIn: GoogleSignIn(),
-              ),),
+              ),
+            ),
             storage: _storage,
-          
           ),
         ),
       ],

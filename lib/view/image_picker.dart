@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:authetication_with_google/bloc/image_picker/image_picker_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +22,8 @@ class ImagePickerPage extends StatelessWidget {
         child: BlocBuilder<ImagesPickerBloc, ImagesPickerState>(
           builder: (context, state) {
             switch (state.runtimeType) {
-              case None:
+              case None: 
+              case ImagesPickerState:
                 return GridView.count(
                   padding: const EdgeInsets.all(15),
                   crossAxisSpacing: 10,
@@ -35,18 +38,14 @@ class ImagePickerPage extends StatelessWidget {
                           border:
                               Border.all(color: Colors.grey.withOpacity(0.5)),
                         ),
-                        child: Column(
-                          children: [
-                            state.firstImage != null
-                                ? Image.file(
-                                    state.firstImage!,
-                                    fit: BoxFit.cover,
-                                    height: 100,
-                                    width: 100,
-                                  )
-                                : const Icon(Icons.camera_alt_outlined),
-                          ],
-                        ),
+                        child: state.firstImage != null && state.firstImage != File("")
+                            ? Image.file(
+                                state.firstImage!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              )
+                            : const Icon(Icons.camera_alt_outlined),
                       ),
                     ),
                     InkWell(
@@ -57,42 +56,36 @@ class ImagePickerPage extends StatelessWidget {
                           border:
                               Border.all(color: Colors.grey.withOpacity(0.5)),
                         ),
-                        child: Column(children: [
-                          state.secondImage != null
-                              ? Image.file(
-                                  state.secondImage!,
-                                  fit: BoxFit.cover,
-                                  height: 100,
-                                  width: 100,
-                                )
-                              : const Icon(Icons.camera_alt_outlined),
-                        ]),
+                        child: state.secondImage != null && state.secondImage != File("")
+                            ? Image.file(
+                                state.secondImage!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              )
+                            : const Icon(Icons.camera_alt_outlined),
                       ),
                     ),
                     InkWell(
-                      onTap: () =>  _imagesPickerBloc.add(ThirdImagePicked()),
+                      onTap: () => _imagesPickerBloc.add(ThirdImagePicked()),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.red,
                           border:
                               Border.all(color: Colors.grey.withOpacity(0.5)),
                         ),
-                        child: Column(
-                          children: [
-                            state.thirdImage != null
-                                ? Image.file(
-                                    state.thirdImage!,
-                                    fit: BoxFit.cover,
-                                    height: 100,
-                                    width: 100,
-                                  )
-                                : const Icon(Icons.camera_alt_outlined),
-                          ],
-                        ),
+                        child: state.thirdImage != null && state.thirdImage != File("")
+                            ? Image.file(
+                                state.thirdImage!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              )
+                            : const Icon(Icons.camera_alt_outlined),
                       ),
                     ),
                     InkWell(
-                       onTap: () =>  _imagesPickerBloc.add(FourthImagePicked()),
+                      onTap: () => _imagesPickerBloc.add(FourthImagePicked()),
                       child: Container(
                         width: 50,
                         height: 50,
@@ -100,62 +93,55 @@ class ImagePickerPage extends StatelessWidget {
                             color: Colors.red,
                             border: Border.all(
                                 color: Colors.grey.withOpacity(0.5))),
-                        child: Column(children: [
-                          state.fourthImage != null
-                              ? Image.file(
-                                  state.fourthImage!,
-                                  fit: BoxFit.cover,
-                                  height: 100,
-                                  width: 100,
-                                )
-                              : const Icon(Icons.camera_alt_outlined),
-                        ]),
+                        child: state.fourthImage != null && state.fourthImage != File("")
+                            ? Image.file(
+                                state.fourthImage!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              )
+                            : const Icon(Icons.camera_alt_outlined),
                       ),
                     ),
                     InkWell(
-                       onTap: () =>  _imagesPickerBloc.add(FifthImagePicked()),
+                      onTap: () => _imagesPickerBloc.add(FifthImagePicked()),
                       child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            border: Border.all(
-                                color: Colors.grey.withOpacity(0.5))),
-                        child: Column(children: [
-                          state.fifthImage != null
+                          decoration: BoxDecoration(
+                              color: Colors.red,
+                              border: Border.all(
+                                  color: Colors.grey.withOpacity(0.5))),
+                          child: state.fifthImage != null && state.fifthImage != File("")
                               ? Image.file(
                                   state.fifthImage!,
                                   fit: BoxFit.cover,
                                   height: 100,
                                   width: 100,
                                 )
-                              : const Icon(Icons.camera_alt_outlined)
-                        ]),
-                      ),
+                              : const Icon(Icons.camera_alt_outlined)),
                     ),
                     InkWell(
-                     onTap: () =>  _imagesPickerBloc.add(SixthImagePicked()),
+                      onTap: () => _imagesPickerBloc.add(SixthImagePicked()),
                       child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            border: Border.all(
-                                color: Colors.grey.withOpacity(0.5))),
-                        child: Column(children: [
-                          state.sixthImage != null
+                          decoration: BoxDecoration(
+                              color: Colors.red,
+                              border: Border.all(
+                                  color: Colors.grey.withOpacity(0.5))),
+                          child: state.sixthImage != null && state.sixthImage != File("")
                               ? Image.file(
                                   state.sixthImage!,
                                   fit: BoxFit.cover,
                                   height: 100,
                                   width: 100,
                                 )
-                              : const Icon(Icons.camera_alt_outlined)
-                        ]),
-                      ),
+                              : const Icon(Icons.camera_alt_outlined)),
                     ),
                   ],
                 );
               case Error:
-                return Text("Ocorreu um erro no servidor");
+                return const Text("Ocorreu um erro no servidor");
               default:
-                return Text("Estado inválido");
+                print(state.runtimeType);
+                return const Text("Estado inválido");
             }
           },
         ),

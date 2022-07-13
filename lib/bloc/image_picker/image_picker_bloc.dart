@@ -31,13 +31,13 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
   StreamSubscription? _authenticationSubscription;
   AuthenticationRepository _authRepository;
   // String? stringPath;
-
-  late File firstImageBloc = File('');
-  late File secondImageBloc = File('');
-  late File thirdImageBloc = File('');
-  late File fourthImageBloc = File('');
-  late File fifthImageBloc = File('');
-  late File sixthImageBloc = File('');
+  
+  File firstImageFile = File('');
+  File secondImageFile = File('2');
+  File thirdImageFile = File('');
+  File fourthImageFile = File('');
+  File fifthImageFile = File('');
+  File sixthImageFile = File('');
 
   @override
   Stream<ImagesPickerState> mapEventToState(ImagesPickerEvent event) async* {
@@ -49,7 +49,7 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
             await firstPicker.pickImage(source: ImageSource.gallery);
         final firstImage = File(firstPickedImage!.path);
 
-        firstImageBloc = firstImage;
+        firstImageFile = firstImage;
         firebaseStorageService.uploadImage('first:$path', firstImage);
         // PickedFile pickedFile = await ImagePicker().pickImage(source: source);
       } else if (event is SecondImagePicked) {
@@ -58,7 +58,7 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
             await secondPicker.pickImage(source: ImageSource.gallery);
         final secondImage = File(secondPickedImage!.path);
 
-        secondImageBloc = secondImage;
+        secondImageFile = secondImage;
 
         firebaseStorageService.uploadImage('second:$path', secondImage);
         // PickedFile pickedFile = await ImagePick
@@ -68,7 +68,7 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
             await thirdPicker.pickImage(source: ImageSource.gallery);
         final thirdImage = File(thirdPickedImage!.path);
 
-        thirdImageBloc = thirdImage;
+        thirdImageFile = thirdImage;
 
         // firebaseStorageService.uploadImage(event.path, newImage);
         // PickedFile pickedFile = await ImagePick
@@ -78,7 +78,7 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
             await fourthPicker.pickImage(source: ImageSource.gallery);
         final fourthImage = File(fourthPickedImage!.path);
 
-        fourthImageBloc = fourthImage;
+        fourthImageFile = fourthImage;
 
         // firebaseStorageService.uploadImage(event.path, newImage);
         // PickedFile pickedFile = await ImagePick
@@ -88,7 +88,7 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
             await fifthPicker.pickImage(source: ImageSource.gallery);
         final fifthImage = File(fifthPickedImage!.path);
 
-        fifthImageBloc = fifthImage;
+        fifthImageFile = fifthImage;
 
         // firebaseStorageService.uploadImage(event.path, newImage);
         // PickedFile pickedFile = await ImagePick
@@ -98,21 +98,21 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
             await sixthPicker.pickImage(source: ImageSource.gallery);
         final sixthImage = File(sixthPickedImage!.path);
 
-        sixthImageBloc = sixthImage;
+        sixthImageFile = sixthImage;
 
         // firebaseStorageService.uploadImage(event.path, newImage);
         // PickedFile pickedFile = await ImagePick
       }
 
       yield ImagesPickerState(
-        firstImage: firstImageBloc,
-        secondImage: secondImageBloc,
-        thirdImage: thirdImageBloc,
-        fourthImage: fourthImageBloc,
-        fifthImage: fifthImageBloc,
-        sixthImage: sixthImageBloc,
+        firstImage: firstImageFile,
+        secondImage: secondImageFile,
+        thirdImage: thirdImageFile,
+        fourthImage: fourthImageFile,
+        fifthImage: fifthImageFile,
+        sixthImage: sixthImageFile,
       );
-      emit(Success());
+      // emit(Success());
     } catch (e) {
       emit(Error());
     }

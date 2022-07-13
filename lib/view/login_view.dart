@@ -25,9 +25,11 @@ class LoginMainView extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.message)),
                   );
-                } else if(state is AuthenticationNetworkFailure){
+                } else if (state is AuthenticationNetworkFailure) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Erro de conexão, verifique e tente novamente")),
+                    const SnackBar(
+                        content: Text(
+                            "Erro de conexão, verifique e tente novamente")),
                   );
                 }
               },
