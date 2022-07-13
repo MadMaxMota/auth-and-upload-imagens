@@ -33,7 +33,7 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
   // String? stringPath;
   
   File firstImageFile = File('');
-  File secondImageFile = File('2');
+  File secondImageFile = File('lkfknf');
   File thirdImageFile = File('');
   File fourthImageFile = File('');
   File fifthImageFile = File('');
@@ -48,6 +48,7 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
         final firstPickedImage =
             await firstPicker.pickImage(source: ImageSource.gallery);
         final firstImage = File(firstPickedImage!.path);
+        
 
         firstImageFile = firstImage;
         firebaseStorageService.uploadImage('first:$path', firstImage);
@@ -103,6 +104,8 @@ class ImagesPickerBloc extends Bloc<ImagesPickerEvent, ImagesPickerState> {
         // firebaseStorageService.uploadImage(event.path, newImage);
         // PickedFile pickedFile = await ImagePick
       }
+
+      
 
       yield ImagesPickerState(
         firstImage: firstImageFile,

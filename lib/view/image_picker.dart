@@ -38,7 +38,7 @@ class ImagePickerPage extends StatelessWidget {
                           border:
                               Border.all(color: Colors.grey.withOpacity(0.5)),
                         ),
-                        child: state.firstImage != null && state.firstImage != File("")
+                        child: state.firstImage != null && state.firstImage!.existsSync()
                             ? Image.file(
                                 state.firstImage!,
                                 fit: BoxFit.cover,
@@ -56,7 +56,7 @@ class ImagePickerPage extends StatelessWidget {
                           border:
                               Border.all(color: Colors.grey.withOpacity(0.5)),
                         ),
-                        child: state.secondImage != null && state.secondImage != File("")
+                        child: state.secondImage != null && state.secondImage!.existsSync()
                             ? Image.file(
                                 state.secondImage!,
                                 fit: BoxFit.cover,
@@ -74,7 +74,7 @@ class ImagePickerPage extends StatelessWidget {
                           border:
                               Border.all(color: Colors.grey.withOpacity(0.5)),
                         ),
-                        child: state.thirdImage != null && state.thirdImage != File("")
+                        child: state.thirdImage != null && state.thirdImage!.existsSync()
                             ? Image.file(
                                 state.thirdImage!,
                                 fit: BoxFit.cover,
@@ -93,7 +93,7 @@ class ImagePickerPage extends StatelessWidget {
                             color: Colors.red,
                             border: Border.all(
                                 color: Colors.grey.withOpacity(0.5))),
-                        child: state.fourthImage != null && state.fourthImage != File("")
+                        child: state.fourthImage != null && state.fourthImage!.existsSync()
                             ? Image.file(
                                 state.fourthImage!,
                                 fit: BoxFit.cover,
@@ -110,7 +110,7 @@ class ImagePickerPage extends StatelessWidget {
                               color: Colors.red,
                               border: Border.all(
                                   color: Colors.grey.withOpacity(0.5))),
-                          child: state.fifthImage != null && state.fifthImage != File("")
+                          child: state.fifthImage != null && state.fifthImage!.existsSync()
                               ? Image.file(
                                   state.fifthImage!,
                                   fit: BoxFit.cover,
@@ -126,7 +126,7 @@ class ImagePickerPage extends StatelessWidget {
                               color: Colors.red,
                               border: Border.all(
                                   color: Colors.grey.withOpacity(0.5))),
-                          child: state.sixthImage != null && state.sixthImage != File("")
+                          child: state.sixthImage != null && state.sixthImage!.existsSync()
                               ? Image.file(
                                   state.sixthImage!,
                                   fit: BoxFit.cover,
